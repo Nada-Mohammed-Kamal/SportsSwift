@@ -7,12 +7,11 @@
 //
 
 
-//MARK:- lesa hena al parameters msh 3rfa ha5odha azay
 import Foundation
 import Alamofire
 
 enum  LatesetEventsNEtworking{
-    case getLatestEvents(leaugueId : String , strStatus : String)
+    case getLatestEvents(leaugueId : String)
 }
 
 extension LatesetEventsNEtworking : TargetType{
@@ -37,12 +36,12 @@ extension LatesetEventsNEtworking : TargetType{
         }
     }
     
-    
+    //https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=1905
     
     var task: Task{
         switch self {
-        case .getLatestEvents(let leagueId , let status):
-            return .requestParameters(parameters: ["id" : leagueId , "strStatus" : status] , encoding: URLEncoding.default)
+        case .getLatestEvents(let leagueId):
+            return .requestParameters(parameters: ["id" : leagueId] , encoding: URLEncoding.default)
         }
     }
     var headers: [String : String]? {

@@ -8,8 +8,7 @@
 
 import UIKit
 
-class TeamsMoudel: UICollectionViewCell {
-    
+class TeamsMoudelCell: UICollectionViewCell {
     
     @IBOutlet weak var TeamImageView: UIImageView!
 }

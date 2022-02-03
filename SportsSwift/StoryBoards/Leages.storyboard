@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K35-zd-LnB">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,23 +12,23 @@
             <objects>
                 <viewController storyboardIdentifier="LeagueeViewController" modalPresentationStyle="fullScreen" id="ldZ-ee-Jpm" customClass="LeagueeViewController" customModule="SportsSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bmC-5R-Ulw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-dm-U7l">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3N-F9-zKS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tPN-i1-B6Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="769"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35z-Su-oxn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="UpcomingEventColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xgE-4q-tu1">
-                                                                <rect key="frame" x="0.0" y="88.5" width="414" height="168.5"/>
+                                                                <rect key="frame" x="0.0" y="88.5" width="600" height="168.5"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="dGf-oR-93O">
                                                                     <size key="itemSize" width="369" height="130"/>
@@ -98,7 +97,7 @@
                                                                 </cells>
                                                             </collectionView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDp-Gh-pNt">
-                                                                <rect key="frame" x="334.5" y="0.5" width="71.5" height="69"/>
+                                                                <rect key="frame" x="334.5" y="0.5" width="257.5" height="69"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="57"/>
                                                                 <state key="normal" image="heart" catalog="system"/>
                                                                 <connections>
@@ -139,10 +138,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-ju-7W7">
-                                                        <rect key="frame" x="0.0" y="265" width="414" height="294"/>
+                                                        <rect key="frame" x="0.0" y="265" width="600" height="294"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="LatestResultColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-7g-B30">
-                                                                <rect key="frame" x="8" y="36.5" width="390" height="276"/>
+                                                                <rect key="frame" x="8" y="36.5" width="576" height="276"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="276" id="pNy-gc-t85"/>
@@ -155,7 +154,7 @@
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="LastResultsModel" reuseIdentifier="LastResultsModel" id="08y-ha-M7h" customClass="LastResultsModel" customModule="SportsSwift" customModuleProvider="target">
-                                                                        <rect key="frame" x="8.5" y="10" width="373" height="227"/>
+                                                                        <rect key="frame" x="101.5" y="10" width="373" height="227"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ONt-Kz-1qC">
                                                                             <rect key="frame" x="0.0" y="0.0" width="373" height="227"/>
@@ -265,10 +264,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPj-sp-EFv">
-                                                        <rect key="frame" x="0.0" y="559" width="414" height="210"/>
+                                                        <rect key="frame" x="0.0" y="559" width="600" height="210"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="TeamsColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N0I-88-Q4k">
-                                                                <rect key="frame" x="8" y="52" width="406" height="150"/>
+                                                                <rect key="frame" x="8" y="52" width="592" height="150"/>
                                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="150" id="DNc-eu-UNX"/>
@@ -281,7 +280,7 @@
                                                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TeamsMoudel" reuseIdentifier="TeamsMoudel" id="W2J-HB-PNa" customClass="TeamsMoudel" customModule="SportsSwift" customModuleProvider="target">
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TeamsMoudel" reuseIdentifier="TeamsMoudel" id="W2J-HB-PNa" customClass="TeamsMoudelCell" customModule="SportsSwift" customModuleProvider="target">
                                                                         <rect key="frame" x="10" y="11" width="128" height="128"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JfI-Hc-iGp">
@@ -364,16 +363,16 @@
             </objects>
             <point key="canvasLocation" x="-194.20289855072465" y="79.6875"/>
         </scene>
-        <!--Teams View Controller-->
+        <!--Teams Details View Controller-->
         <scene sceneID="4ev-v8-2gj">
             <objects>
-                <viewController storyboardIdentifier="TeamsViewController" id="K35-zd-LnB" customClass="TeamsViewController" customModule="SportsSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamsViewController" id="K35-zd-LnB" customClass="TeamsDetailsViewController" customModule="SportsSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0T-ZV-Ib3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-zG-qnf">
-                                <rect key="frame" x="127" y="0.0" width="287" height="134.5"/>
+                                <rect key="frame" x="127" y="0.0" width="473" height="90"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -383,15 +382,15 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="452-PP-LP0">
-                                <rect key="frame" x="-16" y="92" width="270" height="134.5"/>
+                                <rect key="frame" x="-16" y="47.5" width="456" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TeamName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7s-mS-eMH">
-                                        <rect key="frame" x="30" y="34" width="142.5" height="31"/>
+                                        <rect key="frame" x="123" y="12" width="142.5" height="31"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
                                         <color key="textColor" red="0.90193895729999995" green="0.90193895729999995" blue="0.90193895729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abreviation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBq-1Y-GbB">
-                                        <rect key="frame" x="28" y="64.5" width="147" height="30"/>
+                                        <rect key="frame" x="121" y="42" width="147" height="30"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="24"/>
                                         <color key="textColor" red="0.90193895729999995" green="0.90193895729999995" blue="0.90193895729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -411,7 +410,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeT-4A-lcO">
-                                <rect key="frame" x="0.0" y="265" width="414" height="631"/>
+                                <rect key="frame" x="0.0" y="176" width="600" height="424"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRB-gU-J42">
@@ -518,7 +517,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="xE8-Vb-QdB"/>
                             </scrollView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bc0-k6-bgw">
-                                <rect key="frame" x="278" y="106" width="106" height="106"/>
+                                <rect key="frame" x="464" y="61.5" width="106" height="106"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="106" id="87O-Il-UdX"/>
                                     <constraint firstAttribute="height" constant="106" id="cFp-Jh-qf9"/>

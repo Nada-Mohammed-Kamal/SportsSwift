@@ -8,5 +8,9 @@
 
 import Foundation
 class UpComingClass : Codable{
-    
+    var strEvent: String?
+    var idLeague: String?
+    var dateEventLocal : String?
+    var strTimeLocal : String?
+    var strStatus :String
 }

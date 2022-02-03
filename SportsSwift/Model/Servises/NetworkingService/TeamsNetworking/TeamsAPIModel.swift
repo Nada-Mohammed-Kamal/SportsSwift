@@ -8,13 +8,14 @@
 
 import Foundation
 
-protocol LeaguesAPIProtocol{
-    func getData(completion : @escaping (Result<AllTeamsApiResultMOdel?, NSError>) -> Void)
+
+protocol  TeamsAPIModelProtocol{
+    func getData(completion: @escaping (Result<AllTeamsApiResultMOdel?, NSError>) -> Void)
 }
 
 
 
-class TeamsAPIModel: BaseAPI<TeamsNetworking> , LeaguesAPIProtocol {
+class TeamsAPIModel: BaseAPI<TeamsNetworking> , TeamsAPIModelProtocol {
     func getData(completion: @escaping (Result<AllTeamsApiResultMOdel?, NSError>) -> Void) {
         
         self.fetchData(target: .getTeams(leagueName: "English Premier League"), responseClass: AllTeamsApiResultMOdel.self)  { (result) in

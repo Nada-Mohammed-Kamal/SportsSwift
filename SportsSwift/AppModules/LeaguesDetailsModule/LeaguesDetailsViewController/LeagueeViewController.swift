@@ -34,7 +34,6 @@ class LeagueeViewController: UIViewController {
         //AppIconImageView.image = UIImage(named: "logo")
         //MARK: Calling SetupDelegationForCollectionViewFunction
         SetUpCollectionViewDelegation()
-       
         teamPresenterRef = TeamPresenter()
         teamPresenterRef?.FetchAllTeamsData()
         

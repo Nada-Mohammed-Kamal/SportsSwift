@@ -8,7 +8,6 @@
 
 
 //https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=4905&strStatus=Match%20Finished
-//MARK:- lesa hena al parameters msh 3rfa ha5odha azay
 
 
 import Foundation
@@ -16,7 +15,7 @@ import Alamofire
 
 
 enum  UpcomingEventsNetworking{
-    case getUpcomingEvents(leaugueId : String , strStatus : String , Eventdate : String , EventTime : String)
+    case getUpcomingEvents(leaugueId : String)
 }
 
 extension UpcomingEventsNetworking : TargetType{
@@ -45,8 +44,8 @@ extension UpcomingEventsNetworking : TargetType{
     
     var task: Task{
         switch self {
-        case .getUpcomingEvents(let leagueId , let status , let Eventdate ,let EventTime):
-            return .requestParameters(parameters: ["id" : leagueId , "strStatus" : status , "dateEventLocal" : Eventdate , "strTimeLocal" : EventTime] , encoding: URLEncoding.default)
+        case .getUpcomingEvents(let leagueId):
+            return .requestParameters(parameters: ["id" : leagueId ], encoding: URLEncoding.default)
         }
     }
     var headers: [String : String]?{

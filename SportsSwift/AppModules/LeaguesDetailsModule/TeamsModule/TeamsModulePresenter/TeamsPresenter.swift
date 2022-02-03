@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol FetchingTeamsDataProtorolVCAndPresenter {
+protocol FetchingTeamsDataProtorolVCAndPresenter{
     func FetchAllTeamsData()
 }
 
@@ -25,7 +25,7 @@ class TeamPresenter : FetchingTeamsDataProtorolVCAndPresenter{
     }*/
     
     func FetchAllTeamsData(){
-        let api : LeaguesAPIProtocol = TeamsAPIModel()
+        let api : TeamsAPIModelProtocol = TeamsAPIModel()
         api.getData { (result) in
             switch result
             {
@@ -36,8 +36,8 @@ class TeamPresenter : FetchingTeamsDataProtorolVCAndPresenter{
                     print("\(String(describing: team.strTeam))\n")
                 }
             case .failure(let error):
-                print("")
-                
+                print(error.localizedDescription)
+                print("\nFailed to fetch all teams data in League Details")
             }
         }
     }

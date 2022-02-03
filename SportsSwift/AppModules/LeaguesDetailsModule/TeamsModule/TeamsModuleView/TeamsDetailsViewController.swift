@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController {
+class TeamsDetailsViewController: UIViewController {
     //MARK:-IBOutlets
     
     @IBOutlet weak var countryView: UIView!
@@ -31,17 +31,27 @@ class TeamsViewController: UIViewController {
         AddingUITOTheTwoUpperView()
         AddingUITOTheTeamsDetailsScrolView()
         presentDataOnTheUI()
+        //MARK:---------------------Code For ViewController the should return data but it is not
+        let api : TeamsAPIModelProtocol = TeamsAPIModel()
+        api.getData { (result) in
+            switch result
+            {
+            case .success(let response):
+                let Teams = response?.TeamsArr
+                for team in Teams ?? []
+                {
+                    print("\(String(describing: team.strTeam))\n")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                print("\nFailed to fetch all teams data in League Details")
+            }
+        }
+        
+        //-------------------------------------------------------------------------------------
 
         
-        /*
-AbreviationLabel
-        CountryNameLabel
-        StadiumNameLabel
-StadiumImage
-        YoutubeIConImage
-        FaceBookIconImage
-        */
-        
+
     }
     
     func AddingUITOTheTwoUpperView(){

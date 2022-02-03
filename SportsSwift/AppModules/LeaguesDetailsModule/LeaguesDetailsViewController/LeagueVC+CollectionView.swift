@@ -26,6 +26,8 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
         TeamsCollectionView.dataSource = self
     }
     
+   
+    
     
     
     //MARK:Collection view Functions
@@ -67,6 +69,7 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
             cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.25)
             cell.UpcomingImageImageView.image = UIImage(named: "Event")?.alpha(0.9)
             cell.contentView.makeCorner(withRadius: 20.0)
+            
             return cell
         }
             
@@ -85,7 +88,7 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
             return cell
         }
         else if collectionView == TeamsCollectionView{
-            let cell : TeamsMoudel = TeamsCollectionView.dequeueReusableCell(withReuseIdentifier: "TeamsMoudel", for: indexPath) as! TeamsMoudel
+            let cell : TeamsMoudelCell = TeamsCollectionView.dequeueReusableCell(withReuseIdentifier: "TeamsMoudel", for: indexPath) as! TeamsMoudelCell
             cell.TeamImageView.makeRounded()
             cell.TeamImageView.image = UIImage(named: "Egypt")
             cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.25)

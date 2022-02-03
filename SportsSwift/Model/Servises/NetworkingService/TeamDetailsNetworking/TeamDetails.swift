@@ -1,22 +1,22 @@
 //
-//  TeamsNetworking.swift
-//  SportsApp
+//  TeamDetails.swift
+//  SportsSwift
 //
-//  Created by nada elmasry on 2/2/22.
+//  Created by nada elmasry on 2/3/22.
 //  Copyright © 2022 nada elmasry. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-enum  TeamsNetworking{
-    case getTeams(leagueName : String)
+enum  TeamDetailsNetworking{
+    case getTeamDetails(leagueName : String)
 }
 
-extension TeamsNetworking : TargetType{
+extension TeamDetailsNetworking : TargetType{
     var method: HTTPMethod {
         switch self {
-        case .getTeams:
+        case .getTeamDetails:
             return .get
         }
     }
@@ -26,10 +26,10 @@ extension TeamsNetworking : TargetType{
             return "https://www.thesportsdb.com/api/v1/json/2/"
         }
     }
-    
+    //https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l=English%20Premier%20League
     var path: String {
         switch self {
-        case .getTeams:
+        case .getTeamDetails:
             return "search_all_teams.php?"
         }
     }
@@ -37,7 +37,7 @@ extension TeamsNetworking : TargetType{
     
     var task: Task {
         switch self {
-        case .getTeams(let leagueName):
+        case .getTeamDetails(let leagueName):
             return .requestParameters(parameters: ["l" : leagueName], encoding: URLEncoding.default)
         }
     }
