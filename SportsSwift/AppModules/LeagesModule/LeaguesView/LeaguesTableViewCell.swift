@@ -9,7 +9,7 @@
 import UIKit
 
 class LeaguesTableViewCell: UITableViewCell {
-
+   // var presCell : UIViewController?
     @IBOutlet weak var LeagueImage: UIImageView!
     
     @IBOutlet weak var LeagueNameLabel: UILabel!
@@ -26,22 +26,27 @@ class LeaguesTableViewCell: UITableViewCell {
     }
     
     @IBAction func showLeagueVideo(_ sender: Any) {
-        guard  leagueCell!.strYoutube != nil else {
-             print("there is no link")
-            return
-           
-        }
-        let appURL = NSURL(string: "youtube://"+leagueCell!.strYoutube!)!
+
+        if(leagueCell?.strYoutube == "" ){
+            let alart=UIAlertController(title: "Alart", message: "Link is not Avilabel", preferredStyle: .alert)
+             alart.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+          UIApplication.shared.keyWindow?.rootViewController?.present(alart,animated: true,completion: nil)
+                        return
+       }else{
+
+           let appURL = NSURL(string: "youtube://"+leagueCell!.strYoutube!)!
            let webURL = NSURL(string: "https://"+leagueCell!.strYoutube!)!
            let application = UIApplication.shared
-
+           
            if application.canOpenURL(appURL as URL) {
+
                application.open(appURL as URL)
+
            } else {
-               // if Youtube app is not installed, open URL inside Safari
-               application.open(webURL as URL)
+
+              application.open(webURL as URL)
            }
-        
+        }
     }
     override func awakeFromNib() {
         super.awakeFromNib()

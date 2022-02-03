@@ -21,9 +21,15 @@ class SportCollectionViewController: UICollectionViewController {
  
 
     override func viewDidLoad() {
-     sportPresenter = SportsPresenter(NetworkSPortSer: NetworkSPortSer, view: self)
-       
-        sportPresenter.getItems()
+        if Reachability.isConnectedToNetwork(){
+            self.title = "Sports"
+          sportPresenter = SportsPresenter(NetworkSPortSer: NetworkSPortSer, view: self)
+          sportPresenter.getItems()
+        }else{
+            let alart=UIAlertController(title: "Alart", message: "pleace check your conectivity and try again", preferredStyle: .alert)
+             alart.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+             self.present(alart,animated: true,completion: nil)
+        }
     }
 
      
