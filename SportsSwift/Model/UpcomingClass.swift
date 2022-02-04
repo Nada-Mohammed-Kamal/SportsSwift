@@ -13,4 +13,5 @@ class UpComingClass : Codable{
     var dateEventLocal : String?
     var strTimeLocal : String?
     var strStatus :String
+    
 }

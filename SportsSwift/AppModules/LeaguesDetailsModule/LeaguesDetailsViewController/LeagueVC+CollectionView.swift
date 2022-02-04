@@ -37,7 +37,7 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
         }
             
         else if collectionView == LatestResultCollectionView{
-            return 5
+            return teamPresenterRef.FinishedEvents.count
         }
         else{
             return 1
@@ -46,11 +46,11 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == UpcomingEventsCollectionView{
-            return 6
+            return teamPresenterRef.UpcomingEvents.count
         }
             
         else if collectionView == LatestResultCollectionView{
-            return 6
+            return teamPresenterRef.FinishedEvents.count
         }
         else{
             return teamPresenterRef.teams?.count ?? 0
@@ -65,28 +65,42 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
         let EmptyCell : UICollectionViewCell = UICollectionViewCell()
         if collectionView == UpcomingEventsCollectionView{
             let cell : UpcomingEventMoudel = UpcomingEventsCollectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventMoudel", for: indexPath) as! UpcomingEventMoudel
-            cell.DateOfTheEventLabel.text = "5-10-2022"
-            cell.EventNameLabel.text = "Egypt vs ma3'reb"
-            cell.EventTimeLabel.text = "7:00 PM"
+            cell.DateOfTheEventLabel.text = teamPresenterRef.UpcomingEvents[indexPath.row].dateSubstring ?? ""
+            cell.EventNameLabel.text = "\(String(describing: teamPresenterRef.UpcomingEvents[indexPath.row].strAwayTeam ?? "")) vs \(String(describing: teamPresenterRef.UpcomingEvents[indexPath.row].strHomeTeam ?? ""))"
+            cell.EventTimeLabel.text = teamPresenterRef.UpcomingEvents[indexPath.row].daySubString ?? ""
             cell.UpcomingImageImageView.makeCurved()
-            //cell.UpcomingImageImageView.im = UIColor(white: 1, alpha: 0.25)
             cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.25)
-            cell.UpcomingImageImageView.image = UIImage(named: "Event")?.alpha(0.9)
+            cell.UpcomingImageImageView.image = UIImage(named: "placeholder")?.alpha(0.9)
             cell.contentView.makeCorner(withRadius: 20.0)
-            
+            /*objToCallTheDateFunc.convertStringToDate(str: teamPresenterRef.UpcomingEvents[indexPath.row].dateEventLocal ?? "")*/
             return cell
         }
             
         else if collectionView == LatestResultCollectionView{
+            let EmptyCell = UICollectionViewCell()
             let cell : LastResultsModel = LatestResultCollectionView.dequeueReusableCell(withReuseIdentifier: "LastResultsModel", for: indexPath) as! LastResultsModel
-            cell.DateOfTheCompetorsMatchLabel.text = "5-10-2022"
-            cell.FirstTeamNameLabel.text = "Egypt"
-            cell.SecondTeamNameLabel.text = "moroco"
-            cell.ResultOfTheMatchLabel.text = "2:1"
+            cell.DateOfTheCompetorsMatchLabel.text = teamPresenterRef.FinishedEvents[indexPath.row].dateEventLocal ?? ""
+            cell.FirstTeamNameLabel.text = teamPresenterRef.FinishedEvents[indexPath.row].strAwayTeam ?? ""
+            cell.SecondTeamNameLabel.text = teamPresenterRef.FinishedEvents[indexPath.row].strHomeTeam ?? ""
+            cell.ResultOfTheMatchLabel.text = "\(String(describing: teamPresenterRef.FinishedEvents[indexPath.row].intAwayScore ?? "")) : \(String(describing: teamPresenterRef.FinishedEvents[indexPath.row].intHomeScore ?? ""))"
             cell.FirstTeamImageView.makeRounded()
             cell.SecondTeamImageView.makeRounded()
-            cell.FirstTeamImageView.image = UIImage(named: "Egypt")
-            cell.SecondTeamImageView.image = UIImage(named: "moroco")
+            cell.TimeOfTheCompetotersMatchLabel.text = teamPresenterRef.FinishedEvents[indexPath.row].strTimeLocal ?? ""
+            guard let teams = teamPresenterRef.teams else { return EmptyCell}
+            for team in teams{
+                if team.strTeam == teamPresenterRef.FinishedEvents[indexPath.row].strAwayTeam
+                {
+                    cell.FirstTeamImageView.kf.setImage(with: URL(string: team.strTeamBadge ?? "") , placeholder: UIImage(named: "PlaceHolder2"))
+                }
+                
+            }
+            for team in teams{
+                if team.strTeam == teamPresenterRef.FinishedEvents[indexPath.row].strHomeTeam
+                {
+                    cell.SecondTeamImageView.kf.setImage(with: URL(string: team.strTeamBadge ?? "") , placeholder: UIImage(named: "PlaceHolder2"))
+                }
+            }
+            
             cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.25)
             cell.contentView.makeCorner(withRadius: 20.0)
             return cell
@@ -134,10 +148,10 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard collectionView == TeamsCollectionView else {return}
-            let teamDetailsStoryboard = UIStoryboard(name: "Leages", bundle: nil)
-            let teamDetailsVC = teamDetailsStoryboard.instantiateViewController(withIdentifier: "TeamsViewController") as! TeamsDetailsViewController
-            teamDetailsVC.teamSelected = teamPresenterRef.teams?[indexPath.row]
-            self.present(teamDetailsVC, animated: true, completion: nil)
+        let teamDetailsStoryboard = UIStoryboard(name: "Leages", bundle: nil)
+        let teamDetailsVC = teamDetailsStoryboard.instantiateViewController(withIdentifier: "TeamsViewController") as! TeamsDetailsViewController
+        teamDetailsVC.teamSelected = teamPresenterRef.teams?[indexPath.row]
+        self.present(teamDetailsVC, animated: true, completion: nil)
     }
     
     func didFetchEventSuccessfully() {

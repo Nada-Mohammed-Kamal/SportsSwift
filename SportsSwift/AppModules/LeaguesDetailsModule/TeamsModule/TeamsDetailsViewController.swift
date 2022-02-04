@@ -46,7 +46,7 @@ class TeamsDetailsViewController: UIViewController {
         TeamLogoImageView.kf.setImage(with: URL(string: teamSelected.strTeamBadge ?? ""))
         CountryNameLabel.text = teamSelected.strCountry
         StadiumNameLabel.text = teamSelected.strStadium
-        StadiumImage.kf.setImage(with: URL(string: teamSelected.strStadiumThumb ?? ""))
+        StadiumImage.kf.setImage(with: URL(string: teamSelected.strStadiumThumb ?? "") , placeholder: UIImage(named: "placeholder"))
         destextView.text = teamSelected.strDescriptionEN
         teamNameLabel.text = teamSelected.strTeam
         
@@ -58,16 +58,14 @@ class TeamsDetailsViewController: UIViewController {
         BelowView.makeCorner(withRadius: 9.0)
         contentViewInsideScrollView.makeCorner(withRadius: 15.0)
         
-        UpperView.layer.shadowOffset = CGSize(width: 10,
-                                          height: 10)
+        UpperView.layer.shadowOffset = CGSize(width: 10,height: 10)
         UpperView.layer.shadowRadius = 5
         UpperView.layer.shadowOpacity = 0.1
         UpperView.layer.masksToBounds = false
         UpperView.clipsToBounds = false
         
         
-        BelowView.layer.shadowOffset = CGSize(width: 10,
-                                          height: 10)
+        BelowView.layer.shadowOffset = CGSize(width: 10,height: 10)
         BelowView.layer.shadowRadius = 5
         BelowView.layer.shadowOpacity = 0.2
         BelowView.layer.masksToBounds = false

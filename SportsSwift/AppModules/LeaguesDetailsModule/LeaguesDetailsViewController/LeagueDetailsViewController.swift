@@ -11,6 +11,7 @@ import UIKit
 protocol LeagueDetailsPresenterToVC {
     func didFetchDataSuccessfully()
     func didFetchEventSuccessfully()
+    
 }
 
 class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
@@ -21,7 +22,9 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         
     //MARK:- Vars
      var teamPresenterRef : LeagueDetailsViewControlerToPresenter!
+    
 
+    @IBOutlet weak var LeagueNameLabel: UILabel!
     //MARK: IBOutLets
     @IBOutlet weak var AppIconImageView: UIImageView!
     @IBOutlet weak var UpcomingEventsCollectionView: UICollectionView!
@@ -32,12 +35,15 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         super.viewDidLoad()
         
         //MARK: Calling SetupDelegationForCollectionViewFunction
+        let leagueName = teamPresenterRef.getLeageName()
+        LeagueNameLabel.text = leagueName
         SetUpCollectionViewDelegation()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         teamPresenterRef.getAllTeamsFpromPresenter()
         teamPresenterRef.getAllEventsFpromPresenter()
+        
 
         
     }

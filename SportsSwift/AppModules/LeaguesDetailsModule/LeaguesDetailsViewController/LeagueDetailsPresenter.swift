@@ -10,10 +10,17 @@ import Foundation
 
 protocol LeagueDetailsViewControlerToPresenter : AnyObject{
     var teams : [TeamsClass]? { get  set }
+    var FinishedEvents : [RecentEvents] {get  set}
+    var UpcomingEvents : [RecentEvents] {get  set}
     func getAllTeamsFpromPresenter()
     func getAllEventsFpromPresenter()
+    func getLeageName() -> String
+
 }
 class LeagueDetailsPresenter : LeagueDetailsViewControlerToPresenter {
+    var FinishedEvents = [RecentEvents]()
+    
+    var UpcomingEvents = [RecentEvents]()
     let api : TeamsAPIModelProtocol = TeamsAPIModel()
     var VCRef : LeagueDetailsPresenterToVC?
     var leaugeStr : String
@@ -29,8 +36,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewControlerToPresenter {
     func getAllTeamsFpromPresenter(){
         
         
-        api.getData(leagueName: leaugeStr) { [weak self](result) in
-            print("nada")
+        api.getData(leagueName: leaugeStr) {[weak self](result) in
             print(result)
             switch result
             {
@@ -54,9 +60,17 @@ class LeagueDetailsPresenter : LeagueDetailsViewControlerToPresenter {
                 self?.events = response?.events
                 if let events = self?.events{
                     for event in events {
-                        print(event.strEvent)
+                        if event.strStatus == "Match Finished" || (event.convertStringToDate(str: event.strTimestamp ?? "") < Date())
+                        {
+                            self?.FinishedEvents.append(event)
+                            event.getDateAndTimeFromTimeStamp()
+                        }
+                        else if (event.convertStringToDate(str: event.strTimestamp ?? "")) >= Date(){
+                            self?.UpcomingEvents.append(event)
+                            event.getDateAndTimeFromTimeStamp()
+                        }
                     }}
-                print(response?.events?.count)
+                print(response?.events?.count as Any)
                 
                 self?.VCRef?.didFetchEventSuccessfully()
             case .failure(let error):
@@ -64,5 +78,8 @@ class LeagueDetailsPresenter : LeagueDetailsViewControlerToPresenter {
                 print("\nFailed to fetch all teams data in League Details")
             }
         }
+    }
+    func getLeageName() -> String {
+        return self.leaugeStr
     }
 }
