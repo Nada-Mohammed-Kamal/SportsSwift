@@ -19,7 +19,6 @@ class RecentEvents : Codable{
     var idHomeTeam : String?
     var idAwayTeam: String?
     var strStatus : String?
-
 }
 
 class AllEventsFromAPI: Codable {

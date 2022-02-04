@@ -9,17 +9,22 @@
 import Foundation
 import Alamofire
 
+enum Errors : Error {
+    case invalidResponse , noData , WrongAPI , statusError , JSONError
+}
+
 class BaseAPI<T: TargetType> {
     
-    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Swift.Result<M?, NSError>) -> Void) {
+    func fetchData<M: Decodable>(target: T, responseClass: M.Type, completion:@escaping (Swift.Result<M?, Error>) -> Void) {
         guard let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue) else { return  }
       
          let headers = target.headers
         let params = buildParams(task: target.task)
         Alamofire.request(target.baseURL + target.path, method: method, parameters: params.0, encoding: params.1, headers: headers).responseJSON { (response) in
+            print(response.request)
         guard let statusCode = response.response?.statusCode else {
                           
-                           completion(.failure(NSError()))
+            completion(.failure(Errors.statusError))
                            return
         }
             
@@ -27,7 +32,7 @@ class BaseAPI<T: TargetType> {
                           
               guard let jsonResponse = try? response.data
                 else {
-                    completion(.failure(NSError()))
+                    completion(.failure(Errors.JSONError))
                               return
                           }
             guard let responseObj = try? JSONDecoder().decode(M.self, from: jsonResponse) else {

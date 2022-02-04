@@ -10,5 +10,5 @@ import Foundation
 
 
 class AllTeamsApiResultMOdel : Codable{
-    var TeamsArr : [TeamsClass]?
+    var teams : [TeamsClass]?
 }

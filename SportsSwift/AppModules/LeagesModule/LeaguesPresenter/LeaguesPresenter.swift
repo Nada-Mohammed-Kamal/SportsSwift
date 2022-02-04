@@ -24,7 +24,7 @@ class LeaguesPresenter{
               self.view?.UpdateTabel()
               print(self.leagues.count)
            case .failure(let error):
-            print(error.localizedRecoverySuggestion!)
+            print(error.localizedDescription)
              
             }
         }

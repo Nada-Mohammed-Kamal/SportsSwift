@@ -11,6 +11,7 @@ import Alamofire
 
 enum  TeamsNetworking{
     case getTeams(leagueName : String)
+    case getEvents(leagueId : String)
 }
 
 extension TeamsNetworking : TargetType{
@@ -18,12 +19,17 @@ extension TeamsNetworking : TargetType{
         switch self {
         case .getTeams:
             return .get
+        case .getEvents:
+            return .get
         }
     }
     var baseURL: String {
         switch self {
-        default:
+        case .getTeams:
             return "https://www.thesportsdb.com/api/v1/json/2/"
+        case .getEvents:
+            return "https://www.thesportsdb.com/api/v1/json/2/"
+            
         }
     }
     
@@ -31,6 +37,8 @@ extension TeamsNetworking : TargetType{
         switch self {
         case .getTeams:
             return "search_all_teams.php?"
+        case .getEvents:
+            return "eventsseason.php?"
         }
     }
 
@@ -39,6 +47,8 @@ extension TeamsNetworking : TargetType{
         switch self {
         case .getTeams(let leagueName):
             return .requestParameters(parameters: ["l" : leagueName], encoding: URLEncoding.default)
+        case .getEvents(let leagueID):
+            return .requestParameters(parameters: ["id" : leagueID], encoding: URLEncoding.default)
         }
     }
     

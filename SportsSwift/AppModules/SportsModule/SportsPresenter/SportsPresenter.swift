@@ -31,8 +31,7 @@ class SportsPresenter{
                     // self?.sports = response!.sports
                    //  self.collectionView.reloadData()
                     case .failure(let error):
-                       print(error.localizedRecoverySuggestion ?? "no error Returned")
-                       print("noo")
+                        print(error.localizedDescription)
                        }
                    }
 

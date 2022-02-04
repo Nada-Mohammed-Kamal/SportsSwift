@@ -10,17 +10,31 @@ import Foundation
 
 
 protocol  TeamsAPIModelProtocol{
-    func getData(completion: @escaping (Result<AllTeamsApiResultMOdel?, NSError>) -> Void)
+    func getData(leagueName : String,completion: @escaping (Result<AllTeamsApiResultMOdel?, Error>) -> Void)
+    
+    func getEvents(leagueID : String,completion: @escaping (Result<AllEventsFromAPI?, Error>) -> Void)
 }
 
-
-
 class TeamsAPIModel: BaseAPI<TeamsNetworking> , TeamsAPIModelProtocol {
-    func getData(completion: @escaping (Result<AllTeamsApiResultMOdel?, NSError>) -> Void) {
+    func getEvents(leagueID: String, completion: @escaping (Result<AllEventsFromAPI?, Error>) -> Void) {
+        self.fetchData(target: .getEvents(leagueId: leagueID), responseClass: AllEventsFromAPI.self)  { (result) in
+            completion(result)
+        }
+    }
+    
+    //    func getEvents(leagueName: String, completion: @escaping (Result<AllEventsFromAPI?, Error>) -> Void) {
+    //        self.fetchData(target: .getEvents(leagueName: leagueName), responseClass: AllEventsFromAPI.self)  { (result) in
+    //                       completion(result)
+    //                   }
+    //
+    //
+    //    }
+    
+    func getData(leagueName : String, completion: @escaping (Result<AllTeamsApiResultMOdel?, Error>) -> Void) {
         
-        self.fetchData(target: .getTeams(leagueName: "English Premier League"), responseClass: AllTeamsApiResultMOdel.self)  { (result) in
-                   completion(result)
-               }
+        self.fetchData(target: .getTeams(leagueName: leagueName), responseClass: AllTeamsApiResultMOdel.self)  { (result) in
+            completion(result)
+        }
         
     }
 }

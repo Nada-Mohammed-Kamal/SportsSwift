@@ -8,7 +8,7 @@
 
 import Foundation
 protocol AllSportsAPIProtocol {
-    func getAllSports(completion: @escaping (Result<AllSports?, NSError>) -> Void)
+    func getAllSports(completion: @escaping (Result<AllSports?, Error>) -> Void)
 }
 
 
@@ -16,7 +16,7 @@ class AllSportsAPI: BaseAPI<AllSportsNetworking>,  AllSportsAPIProtocol{
     
     //MARK:- Requests
     
-    func getAllSports(completion: @escaping (Result<AllSports?, NSError>) -> Void) {
+    func getAllSports(completion: @escaping (Result<AllSports?, Error>) -> Void) {
         self.fetchData(target: .getAllSports, responseClass: AllSports.self) { (result) in
             completion(result)
         }

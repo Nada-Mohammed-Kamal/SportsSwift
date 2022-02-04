@@ -17,6 +17,6 @@ class TeamsClass : Codable{
     var strFacebook : String?  // www.facebook.com\/Arsenal
     var strDescriptionEN : String?
     var strCountry : String?
-    var strTeamLogo : String?
+    var strTeamBadge : String?
     var strYoutube : String?
 }

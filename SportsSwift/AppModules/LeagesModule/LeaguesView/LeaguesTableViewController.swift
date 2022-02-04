@@ -50,22 +50,21 @@ class LeaguesTableViewController: UITableViewController {
      }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PresentLeagueDetailsScreen(leagueId: leaguePresenter.leagues[indexPath.row].idLeague ?? "" )
+        PresentLeagueDetailsScreen(leagueId: leaguePresenter.leagues[indexPath.row].strLeague ?? "" , LeagueID: leaguePresenter.leagues[indexPath.row].idLeague ?? "" )
     }
-  
 }
 extension LeaguesTableViewController :LeaguesTableViewControllerProtocal{
     func UpdateTabel(){
         self.tableView.reloadData()
     }
-
     
-    func PresentLeagueDetailsScreen(leagueId : String) -> Void {
+    func PresentLeagueDetailsScreen(leagueId : String , LeagueID : String) -> Void {
         let LeaguestoryBoard = UIStoryboard(name: "Leages", bundle: nil)
-        let LeagueDetailsVC = LeaguestoryBoard.instantiateViewController(withIdentifier: "LeagueeViewController") as! LeagueeViewController
-        LeagueDetailsVC.LeagueID = leagueId
+        let LeagueDetailsVC = LeaguestoryBoard.instantiateViewController(withIdentifier: "LeagueeViewController") as! LeagueDetailsViewController
+        let leagueDetailsPresenter = LeagueDetailsPresenter(leagueName: leagueId , leaugeid: LeagueID)
+        LeagueDetailsVC.teamPresenterRef = leagueDetailsPresenter
+        leagueDetailsPresenter.VCRef = LeagueDetailsVC
         self.present(LeagueDetailsVC, animated: true)
     }
-    
 }
 

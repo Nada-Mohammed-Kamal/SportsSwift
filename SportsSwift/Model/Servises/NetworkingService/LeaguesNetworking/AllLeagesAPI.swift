@@ -8,7 +8,7 @@
 
 import Foundation
 protocol AllLeagesAPIProtocol {
-    func getAllLeagues(sportName: String, completion: @escaping (Result<AllLeagues?, NSError>) -> Void)
+    func getAllLeagues(sportName: String, completion: @escaping (Result<AllLeagues?, Error>) -> Void)
 }
 
 
@@ -16,7 +16,7 @@ class AllLeagesAPI: BaseAPI<AllLeaguesNetworking>, AllLeagesAPIProtocol{
     
     //MARK:- Requests
     
-    func getAllLeagues(sportName: String , completion: @escaping (Result<AllLeagues?, NSError>) -> Void) {
+    func getAllLeagues(sportName: String , completion: @escaping (Result<AllLeagues?, Error>) -> Void) {
         self.fetchData(target: .getAllLeagues(sportName:sportName), responseClass: AllLeagues.self) { (result) in
             completion(result)
         }

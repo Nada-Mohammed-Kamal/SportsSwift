@@ -11,7 +11,7 @@ import Foundation
 
 
 
-extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
+extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     //MARK:- Marks
     
     //MARK: setUP CollectionView Delegation
@@ -26,7 +26,7 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
         TeamsCollectionView.dataSource = self
     }
     
-   
+    
     
     
     
@@ -53,8 +53,12 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
             return 6
         }
         else{
-            return 6
+            return teamPresenterRef.teams?.count ?? 0
         }
+    }
+    
+    func didFetchDataSuccessfully() {
+        TeamsCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,7 +94,8 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
         else if collectionView == TeamsCollectionView{
             let cell : TeamsMoudelCell = TeamsCollectionView.dequeueReusableCell(withReuseIdentifier: "TeamsMoudel", for: indexPath) as! TeamsMoudelCell
             cell.TeamImageView.makeRounded()
-            cell.TeamImageView.image = UIImage(named: "Egypt")
+            print(teamPresenterRef.teams?[indexPath.row].strTeamBadge ?? "no image")
+            cell.setTeamImage(imageSTr : teamPresenterRef.teams?[indexPath.row].strTeamBadge ?? "")
             cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.25)
             cell.contentView.makeCorner(withRadius: 20.0)
             return cell
@@ -116,7 +121,7 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
     func addingSwipe()
     {
         let swipeRight = UISwipeGestureRecognizer(target: self, action:
-             #selector(swipeFunc(gesture:)))
+            #selector(swipeFunc(gesture:)))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
@@ -125,5 +130,19 @@ extension LeagueeViewController : UICollectionViewDelegate , UICollectionViewDat
     {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView == TeamsCollectionView else {return}
+            let teamDetailsStoryboard = UIStoryboard(name: "Leages", bundle: nil)
+            let teamDetailsVC = teamDetailsStoryboard.instantiateViewController(withIdentifier: "TeamsViewController") as! TeamsDetailsViewController
+            teamDetailsVC.teamSelected = teamPresenterRef.teams?[indexPath.row]
+            self.present(teamDetailsVC, animated: true, completion: nil)
+    }
+    
+    func didFetchEventSuccessfully() {
+        UpcomingEventsCollectionView.reloadData()
+        LatestResultCollectionView.reloadData()
+    }
+    
 }

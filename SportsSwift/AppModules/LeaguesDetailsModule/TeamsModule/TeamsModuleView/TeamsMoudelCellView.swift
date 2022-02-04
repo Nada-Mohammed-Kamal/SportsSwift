@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TeamsMoudelCell: UICollectionViewCell {
     
     @IBOutlet weak var TeamImageView: UIImageView!
+    
+    
+    func setTeamImage(imageSTr : String){
+        self.TeamImageView.kf.setImage(with: URL(string: imageSTr))
+    }
 }

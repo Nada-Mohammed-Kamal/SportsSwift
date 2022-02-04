@@ -7,16 +7,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TeamsDetailsViewController: UIViewController {
     //MARK:-IBOutlets
     
+    @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var StadiumView: UIView!
     @IBOutlet weak var KnowAboutUsVIew: UIView!
-    
     @IBOutlet weak var descView: UIView!
-    
     @IBOutlet weak var AbreviationLabel: UILabel!
     @IBOutlet weak var TeamLogoImageView: UIImageView!
     @IBOutlet weak var CountryNameLabel: UILabel!
@@ -26,33 +26,32 @@ class TeamsDetailsViewController: UIViewController {
     @IBOutlet weak var UpperView: UIView!
     @IBOutlet weak var BelowView: UIView!
     @IBOutlet weak var destextView: UITextView!
+    
+    var teamSelected : TeamsClass?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         AddingUITOTheTwoUpperView()
         AddingUITOTheTeamsDetailsScrolView()
-        presentDataOnTheUI()
-        //MARK:---------------------Code For ViewController the should return data but it is not
-        let api : TeamsAPIModelProtocol = TeamsAPIModel()
-        api.getData { (result) in
-            switch result
-            {
-            case .success(let response):
-                let Teams = response?.TeamsArr
-                for team in Teams ?? []
-                {
-                    print("\(String(describing: team.strTeam))\n")
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                print("\nFailed to fetch all teams data in League Details")
-            }
-        }
-        
-        //-------------------------------------------------------------------------------------
+        //presentDataOnTheUI()
+        viewTeamSelected()
 
         
 
     }
+    
+    func viewTeamSelected(){
+        guard let teamSelected = teamSelected else { print("no data"); return}
+        AbreviationLabel.text = teamSelected.strTeamShort
+        TeamLogoImageView.kf.setImage(with: URL(string: teamSelected.strTeamBadge ?? ""))
+        CountryNameLabel.text = teamSelected.strCountry
+        StadiumNameLabel.text = teamSelected.strStadium
+        StadiumImage.kf.setImage(with: URL(string: teamSelected.strStadiumThumb ?? ""))
+        destextView.text = teamSelected.strDescriptionEN
+        teamNameLabel.text = teamSelected.strTeam
+        
+    }
+    
     
     func AddingUITOTheTwoUpperView(){
         UpperView.makeCorner(withRadius: 16.0)
@@ -134,7 +133,7 @@ class TeamsDetailsViewController: UIViewController {
         obj.strStadium = "stad alqahera"
         obj.strStadiumThumb = "sorat al mal3b"
         obj.strTeam = "Egption Team"
-        obj.strTeamLogo = "logo"
+        obj.strTeamBadge = "logo"
         obj.strTeamShort = "Egy"
         obj.strYoutube = "youtube.com"
         
