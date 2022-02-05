@@ -10,17 +10,16 @@
 
 import Foundation
 class FavouritPresenter{
-var DB = CoreDB.sharedInstance
   var array = [FavouriteLeagues]()
     let view : FavoritesTableViewControllerProtocol!
-    
-    init(DB:CoreDB ,view: FavoritesTableViewControllerProtocol  ){
-        self.DB = DB
+    var DB : CoreDB?
+    init(view: FavoritesTableViewControllerProtocol , appdelegate : AppDelegate){
+        self.DB = CoreDB(appDelegate: appdelegate)
         self.view = view
     }
     func retviveFromCore(){
-            DB.getMyManger()
-            array = DB.getAllMovies()
+            //DB.getMyManger()
+        array = DB!.getAllMovies()
         self.view.UpdateTabel()
     }
     

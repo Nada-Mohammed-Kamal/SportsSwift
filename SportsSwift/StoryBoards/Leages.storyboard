@@ -30,7 +30,7 @@
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="UpcomingEventColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xgE-4q-tu1">
                                                                 <rect key="frame" x="0.0" y="88.5" width="414" height="168.5"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="dGf-oR-93O">
                                                                     <size key="itemSize" width="369" height="130"/>
                                                                     <size key="estimatedItemSize" width="130" height="130"/>
@@ -72,7 +72,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="lM6-Fn-KQI" firstAttribute="top" secondItem="iZY-nV-1Li" secondAttribute="top" constant="20" id="1FY-Ak-tWo"/>
                                                                                 <constraint firstItem="kQJ-K1-Amh" firstAttribute="top" secondItem="lM6-Fn-KQI" secondAttribute="bottom" constant="8" id="24y-l4-H3b"/>
@@ -86,7 +86,7 @@
                                                                                 <constraint firstItem="fGY-d5-NGd" firstAttribute="top" secondItem="kQJ-K1-Amh" secondAttribute="bottom" constant="8" id="wVQ-kA-UBu"/>
                                                                             </constraints>
                                                                         </collectionViewCellContentView>
-                                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <size key="customSize" width="369" height="130"/>
                                                                         <connections>
                                                                             <outlet property="DateOfTheEventLabel" destination="kQJ-K1-Amh" id="mEh-ZS-gYU"/>
@@ -112,7 +112,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="34"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                                                <nil key="highlightedColor"/>
+                                                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lu-pg-TDe">
                                                                 <rect key="frame" x="14" y="74.5" width="134.5" height="21"/>
@@ -124,7 +124,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="0.86956870719178081" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="YJF-tH-Nuf" firstAttribute="leading" secondItem="35z-Su-oxn" secondAttribute="leading" constant="8" id="291-Jd-k6o"/>
@@ -145,7 +145,7 @@
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="LatestResultColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-7g-B30">
                                                                 <rect key="frame" x="8" y="36.5" width="390" height="276"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="276" id="pNy-gc-t85"/>
                                                                 </constraints>
@@ -199,7 +199,7 @@
                                                                                     <rect key="frame" x="0.0" y="204.5" width="373" height="20.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                                                    <color key="highlightedColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team2 name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="4" translatesAutoresizingMaskIntoConstraints="NO" id="RM4-BZ-Fa4">
                                                                                     <rect key="frame" x="251" y="130" width="112" height="30"/>
@@ -208,7 +208,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="RM4-BZ-Fa4" firstAttribute="top" secondItem="uIs-lK-el6" secondAttribute="bottom" constant="10" id="1sV-fC-OXG"/>
                                                                                 <constraint firstItem="Kk0-bb-P8v" firstAttribute="leading" secondItem="ONt-Kz-1qC" secondAttribute="leading" id="6J5-8L-rZ5"/>
@@ -256,7 +256,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="8Ul-T9-14P" firstAttribute="leading" secondItem="9yg-ju-7W7" secondAttribute="leading" constant="16" id="Ity-Yi-j5u"/>
                                                             <constraint firstItem="xpd-7g-B30" firstAttribute="top" secondItem="8Ul-T9-14P" secondAttribute="bottom" constant="8.0000000000000142" id="VXh-RG-kSi"/>
@@ -271,7 +271,7 @@
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="TeamsColViewIdentifier" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N0I-88-Q4k">
                                                                 <rect key="frame" x="8" y="52" width="406" height="150"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="150" id="DNc-eu-UNX"/>
                                                                 </constraints>
@@ -313,7 +313,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="sOr-r3-e5O" firstAttribute="leading" secondItem="tPj-sp-EFv" secondAttribute="leading" constant="23" id="B3h-sM-5HS"/>
                                                             <constraint firstAttribute="bottom" secondItem="N0I-88-Q4k" secondAttribute="bottom" constant="8" id="EkU-OI-MFS"/>
@@ -326,7 +326,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="tPN-i1-B6Y" firstAttribute="height" secondItem="a3N-F9-zKS" secondAttribute="height" priority="250" id="14j-Ze-nqJ"/>
                                             <constraint firstItem="tPN-i1-B6Y" firstAttribute="top" secondItem="a3N-F9-zKS" secondAttribute="top" id="Id5-WV-apB"/>
@@ -346,7 +346,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ixK-dm-U7l" firstAttribute="top" secondItem="Y9G-xC-0Lf" secondAttribute="top" id="NkK-A8-69U"/>
                             <constraint firstItem="ixK-dm-U7l" firstAttribute="trailing" secondItem="Y9G-xC-0Lf" secondAttribute="trailing" id="Q5S-zT-iiI"/>
@@ -377,7 +377,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-zG-qnf">
                                 <rect key="frame" x="127" y="0.0" width="287" height="134.5"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -443,7 +443,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="1WF-gV-Dcm"/>
                                                     <constraint firstItem="qrv-i9-ykO" firstAttribute="top" secondItem="sCc-ki-hAv" secondAttribute="bottom" constant="8" id="3sS-6u-Z9b"/>
@@ -469,7 +469,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="y2k-sx-C7L" firstAttribute="centerX" secondItem="bfm-1S-aOK" secondAttribute="centerX" id="1uA-jM-XGd"/>
                                                     <constraint firstItem="TC7-iN-8rX" firstAttribute="centerX" secondItem="bfm-1S-aOK" secondAttribute="centerX" id="1vj-N6-TTT"/>
@@ -483,11 +483,11 @@
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T6P-vE-Euh">
                                                         <rect key="frame" x="7" y="7" width="330" height="422"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="422" id="HLS-JD-6gW"/>
                                                         </constraints>
-                                                        <string key="text">Arsenal Football Club is a professional football club based in Islington, London, England, that plays in the Premier League, the top flight of English football. The club has won 13 League titles, a record 13 FA Cups, 2 League Cups, 15 FA Community Shields, 1 League Centenary Trophy, 1 UEFA Cup Winners' Cup and 1 Inter-Cities Fairs Cup.\r\n\r\nArsenal was the first club from the South of England to join The Football League, in 1893, and they reached the First Division in 1904. Relegated only once, in 1913, they continue the longest streak in the top division, and have won the second-most top-flight matches in English football history. In the 1930s, Arsenal won five League Championships and two FA Cups, and another FA Cup and two Championships after the war. In 1970–71, they won their first League and FA Cup Double. Between 1989 and 2005, they won five League titles and five FA Cups, including two more Doubles. They completed the 20th century with the highest average league position.\r\n\r\nHerbert Chapman won Arsenal's first national trophies, but died prematurely. He helped introduce the WM formation, floodlights, and shirt numbers, and added the white sleeves and brighter red to the club's kit. Arsène Wenger was the longest-serving manager and won the most trophies. He won a record 7 FA Cups, and his title-winning team set an English record for the longest top-flight unbeaten league run at 49 games between 2003 and 2004, receiving the nickname The Invincibles.\r\n\r\nIn 1886, Woolwich munitions workers founded the club as Dial Square. In 1913, the club crossed the city to Arsenal Stadium in Highbury, becoming close neighbours of Tottenham Hotspur, and creating the North London derby. In 2006, they moved to the nearby Emirates Stadium. In terms of revenue, Arsenal is the ninth highest-earning football club in the world, earned €487.6m in 2016–17 season. Based on social media activity from 2014 to 2015, Arsenal's fanbase is the fifth largest in the world. In 2018, Forbes estimated the club was the third most valuable in England, with the club being worth $2.24 billion.</string>
+                                                        <string key="text">Arsenal Football Club is a professional football club based in Islington, London, England, that plays in the Premier League, the top flight of English football. The club </string>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -506,7 +506,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="bfm-1S-aOK" firstAttribute="top" secondItem="9ya-RU-jT6" secondAttribute="bottom" constant="23" id="1Lp-Go-Joa"/>
                                             <constraint firstAttribute="trailing" secondItem="9ya-RU-jT6" secondAttribute="trailing" constant="15" id="469-xY-gDY"/>
@@ -521,7 +521,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="oDk-MK-RiB" firstAttribute="width" secondItem="vRB-gU-J42" secondAttribute="width" multiplier="0.903382" id="ENL-QE-p5f"/>
                                     <constraint firstItem="oDk-MK-RiB" firstAttribute="top" secondItem="vRB-gU-J42" secondAttribute="top" constant="8" id="FIh-Ol-9fS"/>
@@ -537,7 +537,7 @@
                                 <rect key="frame" x="278" y="106" width="106" height="106"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90193895725388606" green="0.90193895725388606" blue="0.90193895725388606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bc0-k6-bgw" firstAttribute="leading" secondItem="452-PP-LP0" secondAttribute="trailing" constant="24" id="5YC-AE-Zgb"/>
                             <constraint firstItem="wPU-GB-fJ5" firstAttribute="trailing" secondItem="452-PP-LP0" secondAttribute="trailing" constant="160" id="ADI-8r-qjr"/>

@@ -25,16 +25,14 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
             tableView.reloadData()
        }
     
-//      var DB = CoreDB.sharedInstance
-//      var array = [FavouriteLeagues]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        favouritPresenter = FavouritPresenter(DB: CoreDB.sharedInstance, view: self)
+        favouritPresenter = FavouritPresenter(view: self ,appdelegate: UIApplication.shared.delegate as! AppDelegate)
               favouritPresenter.retviveFromCore()
-//         DB.getMyManger()
-//         array = DB.getAllMovies()
-//            tableView.reloadData()
+        
+        favouritPresenter.array = favouritPresenter.DB!.getAllMovies()
+            tableView.reloadData()
       
     }
 
@@ -69,27 +67,32 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
         
         let alart=UIAlertController(title: "Delet", message: "Are you sure to delet this movie", preferredStyle: .alert)
         alart.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            self.favouritPresenter.DB.delete(leagu: self.favouritPresenter.array[indexPath.row])
-            self.favouritPresenter.array = self.favouritPresenter.DB.getAllMovies()
+            self.favouritPresenter.DB?.delete(leagu: self.favouritPresenter.array[indexPath.row])
+            self.favouritPresenter.array = self.favouritPresenter.DB!.getAllMovies()
             tableView.reloadData()
- 
-                     }))
+            }))
         alart.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                    self.present(alart,animated: true,completion: nil)
       
     }
 
-}
-extension FavoritesTableViewController : addToFavourites{
-    func addToFavourite(league: FavouriteCoreDataModel) {
-        favouritPresenter.DB.getMyManger()
-        favouritPresenter.DB.insert(myLeague: league)
-       favouritPresenter.array = favouritPresenter.DB.getAllMovies()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tableView.reloadData()
-        
     }
     
- 
     
+    //redirecting to leagueDetails
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let stryBoard = UIStoryboard.init(name: "Leages", bundle: nil)
+//        let leagueDetailsVC = stryBoard.instantiateViewController(identifier: "LeagueeViewController") as! LeagueDetailsViewController
+//        let obj = League()
+//        obj.strLeague = favouritPresenter.array[indexPath.row].strLeague
+//        obj.strYoutube = favouritPresenter.array[indexPath.row].strYoutube
+//        obj.strBadge = favouritPresenter.array[indexPath.row].strBadge
+//        leagueDetailsVC.leagueObject = obj
+//        self.present(leagueDetailsVC, animated: true, completion: nil)
+//    }
     
 }
+

@@ -19,13 +19,12 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
     let spacing : CGFloat = 5.0
         
     //MARK:- Vars
-     var teamPresenterRef : LeagueDetailsViewControlerToPresenter!
+    var leaguePresenterRef : LeagueDetailsPresenter!
     let spinner = UIActivityIndicatorView(style: .large)
-  //  var teamPresenterRef : TeamPresenter?
-    var LeagueID : String?
 
-    
-    
+    var LeagueID : String?
+    var isPressed : Bool?
+    var leagueObject : League?
 
     @IBOutlet weak var LeagueNameLabel: UILabel!
     //MARK: IBOutLets
@@ -36,43 +35,34 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
     //MARK: viewDidLoadFunction
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.backgroundColor = UIColor(white: 0, alpha: 0.2)
-        self.view.addSubview(spinner)
-        spinner.frame = self.view.frame
-        spinner.startAnimating()
-        //MARK: Calling SetupDelegationForCollectionViewFunction
-        let leagueName = teamPresenterRef.getLeageName()
-        LeagueNameLabel.text = leagueName
+        
         SetUpCollectionViewDelegation()
-       
-       // teamPresenterRef = TeamPresenter()
-      //  teamPresenterRef?.FetchAllTeamsData()
+        
+        leaguePresenterRef = LeagueDetailsPresenter(view: self , appDelegate: UIApplication.shared.delegate as! AppDelegate)
+        leaguePresenterRef.viewDidLoad()
+        
+        
+        //MARK: Calling SetupDelegationForCollectionViewFunction
+        let leagueName = leagueObject?.strLeague
+        LeagueNameLabel.text = leagueName
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-        teamPresenterRef.getAllTeamsFpromPresenter()
-        teamPresenterRef.getAllEventsFpromPresenter()
-        
-
-        
     }
         @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
             dismiss(animated: true, completion: nil)
     }
     
-   
-    
-
     //MARK: IBActions
     @IBAction func AddLeagueToFavouriteAction(_ sender: Any) {
+        //a5aly al icon heart.fill msh heart wa swap bynhom
+        isPressed = false
+        let nsManagerObj = FavouriteCoreDataModel()
+        nsManagerObj.strBadge = leagueObject?.strBadge
+        nsManagerObj.strLeague = leagueObject?.strLeague
+        nsManagerObj.strYoutube = leagueObject?.strYoutube
+        print("In AddLeagueToFavouriteAction in Button add")
+        leaguePresenterRef.addToFavourite(league: nsManagerObj)
     }
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

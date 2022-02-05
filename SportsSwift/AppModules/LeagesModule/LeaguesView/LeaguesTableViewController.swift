@@ -40,6 +40,7 @@ class LeaguesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaguesTableViewCell", for: indexPath) as! LeaguesTableViewCell
 
         cell.leagueCell = leaguePresenter.leagues[indexPath.row]
+        
 
         return cell
     }
@@ -50,7 +51,7 @@ class LeaguesTableViewController: UITableViewController {
      }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PresentLeagueDetailsScreen(leagueId: leaguePresenter.leagues[indexPath.row].strLeague ?? "" , LeagueID: leaguePresenter.leagues[indexPath.row].idLeague ?? "" )
+        PresentLeagueDetailsScreen(leagueId: leaguePresenter.leagues[indexPath.row].strLeague ?? "" , LeagueID: leaguePresenter.leagues[indexPath.row].idLeague ?? "", LeagueObj: leaguePresenter.leagues[indexPath.row])
     }
 }
 extension LeaguesTableViewController :LeaguesTableViewControllerProtocal{
@@ -58,12 +59,10 @@ extension LeaguesTableViewController :LeaguesTableViewControllerProtocal{
         self.tableView.reloadData()
     }
     
-    func PresentLeagueDetailsScreen(leagueId : String , LeagueID : String) -> Void {
+    func PresentLeagueDetailsScreen(leagueId : String , LeagueID : String , LeagueObj : League) -> Void {
         let LeaguestoryBoard = UIStoryboard(name: "Leages", bundle: nil)
         let LeagueDetailsVC = LeaguestoryBoard.instantiateViewController(withIdentifier: "LeagueeViewController") as! LeagueDetailsViewController
-        let leagueDetailsPresenter = LeagueDetailsPresenter(leagueName: leagueId , leaugeid: LeagueID)
-        LeagueDetailsVC.teamPresenterRef = leagueDetailsPresenter
-        leagueDetailsPresenter.VCRef = LeagueDetailsVC
+        LeagueDetailsVC.leagueObject = LeagueObj
         self.present(LeagueDetailsVC, animated: true)
     }
 }

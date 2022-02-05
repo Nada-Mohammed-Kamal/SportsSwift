@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "FavoritesTableViewController.tableView(_:didSelectRowAt:):FavoritesTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "leagueDetailsVC.leagueObject">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
