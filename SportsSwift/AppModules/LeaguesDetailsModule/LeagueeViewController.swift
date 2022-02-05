@@ -16,7 +16,7 @@ class LeagueeViewController: UIViewController {
     
     
     //MARK:- Vars
-    var teamPresenterRef : TeamPresenter?
+  //  var teamPresenterRef : TeamPresenter?
     var LeagueID : String?
 
     
@@ -35,8 +35,8 @@ class LeagueeViewController: UIViewController {
         //MARK: Calling SetupDelegationForCollectionViewFunction
         SetUpCollectionViewDelegation()
        
-        teamPresenterRef = TeamPresenter()
-        teamPresenterRef?.FetchAllTeamsData()
+       // teamPresenterRef = TeamPresenter()
+      //  teamPresenterRef?.FetchAllTeamsData()
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right

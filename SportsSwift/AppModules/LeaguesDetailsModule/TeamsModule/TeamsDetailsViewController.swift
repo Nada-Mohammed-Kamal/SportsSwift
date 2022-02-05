@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamsViewController: UIViewController {
+class TeamsDetailsViewController: UIViewController {
     //MARK:-IBOutlets
     
     @IBOutlet weak var countryView: UIView!
