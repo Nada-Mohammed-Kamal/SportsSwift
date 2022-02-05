@@ -15,7 +15,6 @@ protocol LeagueDetailsViewControlerToPresenter : AnyObject{
     func getAllTeamsFpromPresenter()
     func getAllEventsFpromPresenter()
     func getLeageName() -> String
-
 }
 class LeagueDetailsPresenter : LeagueDetailsViewControlerToPresenter {
     var FinishedEvents = [RecentEvents]()

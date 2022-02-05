@@ -11,9 +11,7 @@ import UIKit
 protocol LeagueDetailsPresenterToVC {
     func didFetchDataSuccessfully()
     func didFetchEventSuccessfully()
-    
 }
-
 class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
   
 
@@ -22,6 +20,7 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         
     //MARK:- Vars
      var teamPresenterRef : LeagueDetailsViewControlerToPresenter!
+    let spinner = UIActivityIndicatorView(style: .large)
     
 
     @IBOutlet weak var LeagueNameLabel: UILabel!
@@ -33,7 +32,10 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
     //MARK: viewDidLoadFunction
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        spinner.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        self.view.addSubview(spinner)
+        spinner.frame = self.view.frame
+        spinner.startAnimating()
         //MARK: Calling SetupDelegationForCollectionViewFunction
         let leagueName = teamPresenterRef.getLeageName()
         LeagueNameLabel.text = leagueName

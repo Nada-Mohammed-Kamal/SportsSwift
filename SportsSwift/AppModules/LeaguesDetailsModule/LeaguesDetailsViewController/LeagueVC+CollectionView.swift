@@ -59,6 +59,7 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
     
     func didFetchDataSuccessfully() {
         TeamsCollectionView.reloadData()
+        self.spinner.stopAnimating()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
