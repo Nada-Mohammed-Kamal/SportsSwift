@@ -21,6 +21,10 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
     //MARK:- Vars
      var teamPresenterRef : LeagueDetailsViewControlerToPresenter!
     let spinner = UIActivityIndicatorView(style: .large)
+  //  var teamPresenterRef : TeamPresenter?
+    var LeagueID : String?
+
+    
     
 
     @IBOutlet weak var LeagueNameLabel: UILabel!
@@ -40,6 +44,10 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         let leagueName = teamPresenterRef.getLeageName()
         LeagueNameLabel.text = leagueName
         SetUpCollectionViewDelegation()
+       
+       // teamPresenterRef = TeamPresenter()
+      //  teamPresenterRef?.FetchAllTeamsData()
+        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)

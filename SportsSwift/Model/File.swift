@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-class FavouriteCoreDataModel: Codable {
+import CoreData
+class FavouriteCoreDataModel: NSManagedObject {
     var strLeague : String?
     var strYoutube : String?
     var strBadge : String?
