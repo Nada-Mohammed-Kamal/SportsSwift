@@ -42,7 +42,7 @@ class FavoritesTableViewCell: UITableViewCell {
     
     
     
-    var FavouritCell : FavouriteLeagues?{
+    var FavouritCell : FavouriteLeagueModel?{
           didSet{
               guard  let FavouritCell = FavouritCell else {return}
               FavoriteImage.layer.cornerRadius = FavoriteImage.frame.size.width/2

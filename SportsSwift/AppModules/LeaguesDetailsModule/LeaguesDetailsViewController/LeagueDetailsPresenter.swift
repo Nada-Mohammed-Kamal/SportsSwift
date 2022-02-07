@@ -35,17 +35,16 @@ protocol leagueProtocol {
 class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFavourites */{
     
     var view: LeagueDetailsViewController?
-    var DB : CoreDB?
-    
+    var leagueObject : League!
     let api : TeamsAPIModelProtocol = TeamsAPIModel()
     var teams = [TeamsClass]()
     var events = [RecentEvents]()
     var FinishedEvents = [RecentEvents]()
     var UpcomingEvents = [RecentEvents]()
     
-    init(view: LeagueDetailsViewController, appDelegate : AppDelegate) {
+    init(view: LeagueDetailsViewController , leagueObj : League) {
         self.view = view
-        self.DB = CoreDB(appDelegate: appDelegate)
+        self.leagueObject = leagueObj
     }
     
     func viewDidLoad() {
@@ -54,49 +53,52 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
     }
     
     func getAllTeamsFpromPresenter(){
-        api.getData(leagueName: (view?.leagueObject!.strLeague)!) {[weak self](result) in
+        api.getData(leagueName: (self.leagueObject.strLeague ?? "")) {[weak self](result) in
             print(result)
             switch result
             {
             case .success(let response):
                 guard let myResponse = response else { return }
-                self!.teams = myResponse.teams!
-                print("Teams = \(self!.teams.count)")
-                self!.view?.fetchingTeamsDataSuccess()
+                self?.teams = myResponse.teams ?? []
+                print("Teams = \(self?.teams.count)")
+                self?.view?.fetchingTeamsDataSuccess()
             case .failure(let error):
                 print(error.localizedDescription)
                 print("\nFailed to fetch all teams data in League Details")
             }
         }
     }
+    
+    
+    
+    
+    
     func getAllEventsFpromPresenter(){
-        api.getEvents(leagueID: (view?.leagueObject!.idLeague!)!) {[weak self](result) in
-            print("events")
-            print(result)
+        api.getEvents(leagueID: (self.leagueObject.idLeague ?? "") ) {[weak self](result) in
             switch result
             {
             case .success(let response):
                 guard let myResponse = response else { return }
-                self!.events = myResponse.events!
-
+                self?.events = myResponse.events ?? []
+                
                 if let events = self?.events{
                     for event in events {
                         if event.strStatus == "Match Finished" || (event.convertStringToDate(str: event.strTimestamp ?? "") < Date()) {
                             
                             self?.FinishedEvents.append(event)
                             event.getDateAndTimeFromTimeStamp()
-                            self!.view?.fetchingLatestDataSuccess()
+                            self?.view?.fetchingLatestDataSuccess()
                         }
                         else if (event.convertStringToDate(str: event.strTimestamp ?? "")) >= Date(){
                             
                             self?.UpcomingEvents.append(event)
                             event.getDateAndTimeFromTimeStamp()
-                            self!.view?.fetchingUpcomingDataSuccess()
+                            self?.view?.fetchingUpcomingDataSuccess()
                         }
                     }}
                 print(response?.events?.count as Any)
             case .failure(let error):
-                print(error.localizedDescription)
+                print("no data fetched")
                 print("\nFailed to fetch all teams data in League Details")
             }
         }
@@ -114,19 +116,9 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
         return FinishedEvents.count
     }
     
-    func addToFavourite(league: FavouriteCoreDataModel) {
+    func addToFavourite(league: League) {
         print("In addToFavourite in FavoritesTableViewController")
-        print(league.strLeague!)
-        self.DB!.insert(myLeague: league)
+        CoreDB.shared.insert(myLeague: league)
     }
     
-    /*var favoRef: addToFavourites?
-    var VCRef : LeagueDetailsPresenterToVC?
-    var leaugeStr : String?
-    var leaugeid : String?
-    var leagueObject : League?
-    
-    func getLeageName() -> String {
-        return self.leaugeStr ?? ""
-    }*/
 }

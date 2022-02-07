@@ -5,7 +5,6 @@
 //  Created by tasnem on 1/29/22.
 //  Copyright © 2022 nada elmasry. All rights reserved.
 //
-
 import UIKit
 import Kingfisher
 import CoreData
@@ -15,7 +14,7 @@ protocol FavoritesTableViewControllerProtocol {
 }
 
 protocol addToFavourites{
-    func addToFavourite(league: FavouriteCoreDataModel)
+    func addToFavourite(league: League)
 }
 
 class FavoritesTableViewController: UITableViewController , FavoritesTableViewControllerProtocol{
@@ -27,15 +26,16 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        favouritPresenter = FavouritPresenter(view: self ,appdelegate: UIApplication.shared.delegate as! AppDelegate)
-              favouritPresenter.retviveFromCore()
-        
-        favouritPresenter.array = favouritPresenter.DB!.getAllMovies()
-            tableView.reloadData()
-      
+        favouritPresenter = FavouritPresenter(view: self)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(true)
+        favouritPresenter.retviveFromCore()
+      }
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,15 +51,9 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
 
         cell.FavouritCell = favouritPresenter.array[indexPath.row]
         
-//        cell.FavoriteImage.layer.cornerRadius = cell.FavoriteImage.frame.size.width/2
-//        cell.FavoriteImage.clipsToBounds = true
-//       cell.FavoriteImage.kf.setImage(with: URL(string: array[indexPath.row].strBadge ??  "Ball"))
-       
         return cell
     }
     
-
-   
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return UIScreen.main.bounds.size.height/5
         }
@@ -67,32 +61,33 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
         
         let alart=UIAlertController(title: "Delet", message: "Are you sure to delet this movie", preferredStyle: .alert)
         alart.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            self.favouritPresenter.DB?.delete(leagu: self.favouritPresenter.array[indexPath.row])
-            self.favouritPresenter.array = self.favouritPresenter.DB!.getAllMovies()
-            tableView.reloadData()
+            tableView.beginUpdates()
+            CoreDB.shared.delete(leagu: self.favouritPresenter.array[indexPath.row])
+            self.favouritPresenter.deleteLeague(atIndex: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
             }))
         alart.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                    self.present(alart,animated: true,completion: nil)
       
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        tableView.reloadData()
-    }
+  
     
     
     //redirecting to leagueDetails
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let stryBoard = UIStoryboard.init(name: "Leages", bundle: nil)
-//        let leagueDetailsVC = stryBoard.instantiateViewController(identifier: "LeagueeViewController") as! LeagueDetailsViewController
-//        let obj = League()
-//        obj.strLeague = favouritPresenter.array[indexPath.row].strLeague
-//        obj.strYoutube = favouritPresenter.array[indexPath.row].strYoutube
-//        obj.strBadge = favouritPresenter.array[indexPath.row].strBadge
-//        leagueDetailsVC.leagueObject = obj
-//        self.present(leagueDetailsVC, animated: true, completion: nil)
-//    }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let stryBoard = UIStoryboard.init(name: "Leages", bundle: nil)
+        let leagueDetailsVC = stryBoard.instantiateViewController(identifier: "LeagueeViewController") as! LeagueDetailsViewController
+        let obj = League(idLeague: favouritPresenter.array[indexPath.row].idLeague, strLeague: favouritPresenter.array[indexPath.row].strLeague, strYoutube: favouritPresenter.array[indexPath.row].strYoutube, strBadge: favouritPresenter.array[indexPath.row].strBadge, strLogo: "")
+        let leagueDetailsPresenter = LeagueDetailsPresenter(view: leagueDetailsVC, leagueObj: obj)
+        leagueDetailsVC.leaguePresenterRef = leagueDetailsPresenter
+        //print(obj.idLeague)
+        //leagueDetailsVC.leagueObject = obj
+        
+        //obj.idLeague
+        //leagueDetailsVC.leagueObject = favouritPresenter.array[indexPath.row]
+        self.present(leagueDetailsVC, animated: true, completion: nil)
+    }
 }
 

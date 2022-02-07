@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol LeagueDetailsPresenterToVC {
     func didFetchDataSuccessfully()
@@ -14,9 +15,11 @@ protocol LeagueDetailsPresenterToVC {
 }
 class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
   
-
+    @IBOutlet weak var heartButton: UIButton!
+    
     //MARK: cell size variablels
     let spacing : CGFloat = 5.0
+    //var coreDB = CoreDB(appDelegate: UIApplication.shared.delegate as! AppDelegate)
         
     //MARK:- Vars
     var leaguePresenterRef : LeagueDetailsPresenter!
@@ -24,7 +27,7 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
 
     var LeagueID : String?
     var isPressed : Bool?
-    var leagueObject : League?
+    
 
     @IBOutlet weak var LeagueNameLabel: UILabel!
     //MARK: IBOutLets
@@ -38,13 +41,12 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         
         SetUpCollectionViewDelegation()
         
-        leaguePresenterRef = LeagueDetailsPresenter(view: self , appDelegate: UIApplication.shared.delegate as! AppDelegate)
+        //leaguePresenterRef = LeagueDetailsPresenter(view: self , appDelegate: UIApplication.shared.delegate as! AppDelegate, leagueObj: lea)
         leaguePresenterRef.viewDidLoad()
         
         
-        //MARK: Calling SetupDelegationForCollectionViewFunction
-        let leagueName = leagueObject?.strLeague
-        LeagueNameLabel.text = leagueName
+       // let leagueName = leagueObject?.strLeague
+       // LeagueNameLabel.text = leagueName
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
@@ -56,13 +58,10 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
     
     //MARK: IBActions
     @IBAction func AddLeagueToFavouriteAction(_ sender: Any) {
-        //a5aly al icon heart.fill msh heart wa swap bynhom
-        isPressed = false
-        let nsManagerObj = FavouriteCoreDataModel()
-        nsManagerObj.strBadge = leagueObject?.strBadge
-        nsManagerObj.strLeague = leagueObject?.strLeague
-        nsManagerObj.strYoutube = leagueObject?.strYoutube
+        //isPressed = true
+        heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         print("In AddLeagueToFavouriteAction in Button add")
-        leaguePresenterRef.addToFavourite(league: nsManagerObj)
+        guard let obj = leaguePresenterRef.leagueObject else {return}
+        leaguePresenterRef.addToFavourite(league: obj)
     }
 }

@@ -8,8 +8,10 @@
 
 import Foundation
 import CoreData
-class FavouriteCoreDataModel: Codable {
-    var strLeague : String?
-    var strYoutube : String?
-    var strBadge : String?
-}
+//class FavouriteCoreDataModel: Codable {
+//    var strLeague : String?
+//    var strYoutube : String?
+//    var strBadge : String?
+//    var idLeague: String?
+//    
+//}

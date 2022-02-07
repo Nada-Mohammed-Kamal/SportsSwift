@@ -23,7 +23,7 @@ extension AllLeaguesNetworking: TargetType {
     }
     var path: String {
         switch self {
-        case .getAllLeagues(let sportName):
+        case .getAllLeagues:
             return "search_all_leagues.php?"
         
     }

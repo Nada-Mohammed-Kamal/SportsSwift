@@ -9,52 +9,84 @@
 import Foundation
 import  CoreData
 
-class CoreDB{
+class CoreDB {
+    static let shared = CoreDB()
+    static var viewContext  = persistentContainer.viewContext
+    private init(){}
     
-    var viewContext : NSManagedObjectContext!
-    //static let sharedInstance=CoreDB()
-    var appDelegate : AppDelegate!
     
-    init(appDelegate: AppDelegate){
-        self.appDelegate = appDelegate// UIApplication.shared.delegate as! AppDelegate
-        viewContext = appDelegate.persistentContainer.viewContext
+    
+    // MARK: - Core Data stack
+    
+    static var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "SportsSwift")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    // MARK: - Core Data Saving support
+    
+    static func saveContext () {
+        //     let context = persistentContainer.viewContext
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+                print("Saved Successfully")
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
     
-    func insert(myLeague: FavouriteCoreDataModel) {
-        let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagues", in: viewContext)
-        let league = NSManagedObject(entity: entity!, insertInto: viewContext)
-        league.setValue(myLeague.strLeague, forKey: "strLeague")
-        league.setValue(myLeague.strBadge, forKey: "strBadge")
-        league.setValue(myLeague.strYoutube, forKey: "strYoutube")
+    
+    func insert(myLeague: League) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagueModel", in: CoreDB.viewContext ) else {
+            fatalError("Failed to decode User")
+        }
+        let newleague = FavouriteLeagueModel(entity: entity, insertInto: CoreDB.viewContext)
+        newleague.idLeague = myLeague.idLeague
+        newleague.strLeague = myLeague.strLeague
+        newleague.strBadge = myLeague.strBadge
+        newleague.strYoutube = myLeague.strYoutube
         do{
-            try viewContext.save()
+            try CoreDB.viewContext.save()
             print("Saved")
-            
         }catch let error{
             print(error.localizedDescription)
         }
     }
     
-    func getAllMovies() -> [FavouriteLeagues] {
-        var leagues = [FavouriteLeagues]()
+    
+    
+    func getAllMovies() -> [FavouriteLeagueModel] {
+        var leagues = [FavouriteLeagueModel]()
         //var movie=Movie()
-        let fetch  = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagues")
+        let fetch  = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagueModel")
         do{
-            leagues = try viewContext.fetch(fetch) as! [FavouriteLeagues]
+            leagues = try CoreDB.viewContext.fetch(fetch) as! [FavouriteLeagueModel]
         }catch let error{
             print(error.localizedDescription)
         }
         return leagues
     }
     
-    func delete(leagu:FavouriteLeagues) {
-        viewContext.delete(leagu)
+    func delete(leagu:FavouriteLeagueModel) {
+        CoreDB.viewContext.delete(leagu)
         do{
-            try viewContext.save()
+            try CoreDB.viewContext.save()
             //people.remove(at: 0)
             
         }catch let error{
             print(error.localizedDescription)
         }
     }
+    
+    
 }
+

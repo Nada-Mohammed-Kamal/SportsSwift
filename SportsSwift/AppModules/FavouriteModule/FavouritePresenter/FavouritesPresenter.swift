@@ -10,20 +10,23 @@
 
 import Foundation
 class FavouritPresenter{
-  var array = [FavouriteLeagues]()
+  var array = [FavouriteLeagueModel]()
     let view : FavoritesTableViewControllerProtocol!
-    var DB : CoreDB?
-    init(view: FavoritesTableViewControllerProtocol , appdelegate : AppDelegate){
-        self.DB = CoreDB(appDelegate: appdelegate)
+    init(view: FavoritesTableViewControllerProtocol){
+        //self.DB = CoreDB(appDelegate: appdelegate)
         self.view = view
     }
+    
     func retviveFromCore(){
-            //DB.getMyManger()
-        array = DB!.getAllMovies()
+        //DB.getMyManger()
+        array = CoreDB.shared.getAllMovies()
+        print(array.count)
         self.view.UpdateTabel()
     }
     
- 
+    func deleteLeague(atIndex index: Int){
+        self.array.remove(at: index)
+    }
     
     
 }

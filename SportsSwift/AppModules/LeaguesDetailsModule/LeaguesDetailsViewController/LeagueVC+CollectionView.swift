@@ -9,8 +9,6 @@
 import UIKit
 import Foundation
 
-
-
 extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
     //MARK: setUP CollectionView Delegation

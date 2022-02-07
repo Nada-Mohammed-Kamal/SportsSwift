@@ -22,14 +22,6 @@ class TeamsAPIModel: BaseAPI<TeamsNetworking> , TeamsAPIModelProtocol {
         }
     }
     
-    //    func getEvents(leagueName: String, completion: @escaping (Result<AllEventsFromAPI?, Error>) -> Void) {
-    //        self.fetchData(target: .getEvents(leagueName: leagueName), responseClass: AllEventsFromAPI.self)  { (result) in
-    //                       completion(result)
-    //                   }
-    //
-    //
-    //    }
-    
     func getData(leagueName : String, completion: @escaping (Result<AllTeamsApiResultMOdel?, Error>) -> Void) {
         
         self.fetchData(target: .getTeams(leagueName: leagueName), responseClass: AllTeamsApiResultMOdel.self)  { (result) in

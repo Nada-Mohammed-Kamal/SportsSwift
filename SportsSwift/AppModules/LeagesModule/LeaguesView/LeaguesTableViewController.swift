@@ -14,9 +14,10 @@ protocol LeaguesTableViewControllerProtocal {
 }
 
 class LeaguesTableViewController: UITableViewController {
+    
     var sport : Sports?
-  
     var leaguePresenter : LeaguesPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
           leaguePresenter = LeaguesPresenter(NetworkLeagueSer: AllLeagesAPI(), view: self)
@@ -51,7 +52,7 @@ class LeaguesTableViewController: UITableViewController {
      }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PresentLeagueDetailsScreen(leagueId: leaguePresenter.leagues[indexPath.row].strLeague ?? "" , LeagueID: leaguePresenter.leagues[indexPath.row].idLeague ?? "", LeagueObj: leaguePresenter.leagues[indexPath.row])
+        PresentLeagueDetailsScreen(LeagueObj: leaguePresenter.leagues[indexPath.row])
     }
 }
 extension LeaguesTableViewController :LeaguesTableViewControllerProtocal{
@@ -59,10 +60,12 @@ extension LeaguesTableViewController :LeaguesTableViewControllerProtocal{
         self.tableView.reloadData()
     }
     
-    func PresentLeagueDetailsScreen(leagueId : String , LeagueID : String , LeagueObj : League) -> Void {
+    func PresentLeagueDetailsScreen( LeagueObj : League) {
         let LeaguestoryBoard = UIStoryboard(name: "Leages", bundle: nil)
         let LeagueDetailsVC = LeaguestoryBoard.instantiateViewController(withIdentifier: "LeagueeViewController") as! LeagueDetailsViewController
-        LeagueDetailsVC.leagueObject = LeagueObj
+        //LeagueDetailsVC.leagueObject = LeagueObj
+        let leagueDetailsPresenter = LeagueDetailsPresenter(view: LeagueDetailsVC, leagueObj: LeagueObj)
+        LeagueDetailsVC.leaguePresenterRef = leagueDetailsPresenter
         self.present(LeagueDetailsVC, animated: true)
     }
 }
