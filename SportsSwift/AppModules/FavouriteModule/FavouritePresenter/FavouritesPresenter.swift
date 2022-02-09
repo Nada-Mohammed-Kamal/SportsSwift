@@ -20,12 +20,24 @@ class FavouritPresenter{
     func retviveFromCore(){
         //DB.getMyManger()
         array = CoreDB.shared.getAllMovies()
+        
+        //3ayza a filter al array ano maya3rdsh al 7agat al mtkarara aw mydafhash aslan
+        /*var result = [FavouriteLeagueModel]()
+        for value in array {
+            if result.contains(value) == false {
+            result.append(value)
+            }
+        }
+        
+        */
         print(array.count)
         self.view.UpdateTabel()
     }
     
     func deleteLeague(atIndex index: Int){
+        CoreDB.shared.delete(withID: array[index].idLeague ?? "" )
         self.array.remove(at: index)
+        self.view.UpdateTabel()
     }
     
     

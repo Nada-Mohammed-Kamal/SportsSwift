@@ -62,7 +62,7 @@ class FavoritesTableViewController: UITableViewController , FavoritesTableViewCo
         let alart=UIAlertController(title: "Delet", message: "Are you sure to delet this movie", preferredStyle: .alert)
         alart.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             tableView.beginUpdates()
-            CoreDB.shared.delete(leagu: self.favouritPresenter.array[indexPath.row])
+            //CoreDB.shared.delete(leagu: self.favouritPresenter.array[indexPath.row])
             self.favouritPresenter.deleteLeague(atIndex: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()

@@ -47,6 +47,10 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
         self.leagueObject = leagueObj
     }
     
+    func getLeagueName() -> String {
+        return leagueObject.strLeague ?? ""
+    }
+    
     func viewDidLoad() {
         getAllTeamsFpromPresenter()
         getAllEventsFpromPresenter()
@@ -121,4 +125,13 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
         CoreDB.shared.insert(myLeague: league)
     }
     
+    
+    func removeFromFav()
+    {
+        CoreDB.shared.delete(withID: leagueObject.idLeague ?? "")
+    }
+    
+    func checkIfInFavourite() -> Bool {
+        return CoreDB.shared.checkIFExistInDatabase(withID: leagueObject.idLeague ?? "")
+    }
 }

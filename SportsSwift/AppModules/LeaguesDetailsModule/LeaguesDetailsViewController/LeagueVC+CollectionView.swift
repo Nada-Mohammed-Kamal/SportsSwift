@@ -55,6 +55,8 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
         self.spinner.stopAnimating()
     }
     
+
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let EmptyCell : UICollectionViewCell = UICollectionViewCell()
         if collectionView == UpcomingEventsCollectionView{
@@ -114,7 +116,7 @@ extension LeagueDetailsViewController : UICollectionViewDelegate , UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == UpcomingEventsCollectionView{
-            return CGSize(width: 369.0, height: 130.0)
+            return CGSize(width: UpcomingEventsCollectionView.frame.width - 20, height: 130.0)
         }
         else if collectionView == LatestResultCollectionView
         {

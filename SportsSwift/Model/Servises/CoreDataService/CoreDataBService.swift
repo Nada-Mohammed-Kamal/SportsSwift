@@ -31,11 +31,11 @@ class CoreDB {
     
     // MARK: - Core Data Saving support
     
-    static func saveContext () {
+     func saveContext () {
         //     let context = persistentContainer.viewContext
-        if viewContext.hasChanges {
+        if CoreDB.viewContext.hasChanges {
             do {
-                try viewContext.save()
+                try CoreDB.viewContext.save()
                 print("Saved Successfully")
             } catch {
                 let nserror = error as NSError
@@ -61,9 +61,6 @@ class CoreDB {
             print(error.localizedDescription)
         }
     }
-    
-    
-    
     func getAllMovies() -> [FavouriteLeagueModel] {
         var leagues = [FavouriteLeagueModel]()
         //var movie=Movie()
@@ -76,17 +73,41 @@ class CoreDB {
         return leagues
     }
     
-    func delete(leagu:FavouriteLeagueModel) {
-        CoreDB.viewContext.delete(leagu)
-        do{
-            try CoreDB.viewContext.save()
-            //people.remove(at: 0)
-            
-        }catch let error{
-            print(error.localizedDescription)
+//    func delete(leaguID: String) {
+//        //CoreDB.viewContext.delete(leaguID)
+//        do{
+//            try CoreDB.viewContext.save()
+//            //people.remove(at: 0)
+//
+//        }catch let error{
+//            print(error.localizedDescription)
+//        }
+//    }
+    
+    
+     func delete(withID: String) {
+        let fetchRequest: NSFetchRequest<FavouriteLeagueModel> = FavouriteLeagueModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "idLeague=='\(withID)'")
+        if let result = try? CoreDB.viewContext.fetch(fetchRequest) {
+            for object in result {
+                CoreDB.viewContext.delete(object)
+            }
         }
+        CoreDB.shared.saveContext()
     }
     
+    
+    func checkIFExistInDatabase(withID: String) -> Bool{
+        let fetchRequest: NSFetchRequest<FavouriteLeagueModel> = FavouriteLeagueModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "idLeague=='\(withID)'")
+        if let result = try? CoreDB.viewContext.fetch(fetchRequest) {
+                if result.count > 0
+                {
+                    return true
+            }
+        }
+        return false
+    }
     
 }
 
