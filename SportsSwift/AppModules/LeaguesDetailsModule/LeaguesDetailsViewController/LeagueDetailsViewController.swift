@@ -16,6 +16,8 @@ protocol LeagueDetailsPresenterToVC {
 class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
   
     @IBOutlet weak var heartButton: UIButton!
+    var popup:UIView!
+
     
     //MARK: cell size variablels
     let spacing : CGFloat = 5.0
@@ -45,6 +47,8 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         heartButton.setImage(UIImage(systemName : isPressed ? "heart.fill" : "heart"), for: .normal)
         leaguePresenterRef.viewDidLoad()
         self.showToast(message: "Swipe right to go back", font: .systemFont(ofSize: 12.0))
+        self.showAlert()
+        //self.showToast(message: "Swipe right to go back", font: .systemFont(ofSize: 12.0))
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -52,7 +56,13 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
             dismiss(animated: true, completion: nil)
     }
-    //MARK: IBActions
+    
+
+    
+    
+    
+    
+    //MARK: IBAction
     @IBAction func AddLeagueToFavouriteAction(_ sender: Any) {
         if(isPressed == true)
         {
@@ -76,6 +86,16 @@ class LeagueDetailsViewController: UIViewController, LeagueDetailsPresenterToVC{
         }
         print(isPressed)
         
+    }
+    
+    
+
+
+
+    func showAlert() {
+        let alert = UIAlertController(title: "Note", message: "Swipe right to go back", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
 }

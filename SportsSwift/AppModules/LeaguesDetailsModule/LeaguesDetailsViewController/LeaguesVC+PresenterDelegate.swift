@@ -24,6 +24,8 @@ extension LeagueDetailsViewController: leagueProtocol {
     
     func fetchingTeamsDataSuccess() {
         TeamsCollectionView.reloadData()
+        self.showToast(message: "Swipe right to go back", font: .systemFont(ofSize: 12.0))
+        //self.showAlert()
     }
     
     func fetchingUpcomingDataSuccess() {

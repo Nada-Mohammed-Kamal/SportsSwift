@@ -64,7 +64,7 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
             case .success(let response):
                 guard let myResponse = response else { return }
                 self?.teams = myResponse.teams ?? []
-                print("Teams = \(self?.teams.count)")
+                print("Teams = \(self?.teams.count ?? 0)")
                 self?.view?.fetchingTeamsDataSuccess()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -101,7 +101,7 @@ class LeagueDetailsPresenter /*: LeagueDetailsViewControlerToPresenter, addToFav
                         }
                     }}
                 print(response?.events?.count as Any)
-            case .failure(let error):
+            case .failure( _):
                 print("no data fetched")
                 print("\nFailed to fetch all teams data in League Details")
             }

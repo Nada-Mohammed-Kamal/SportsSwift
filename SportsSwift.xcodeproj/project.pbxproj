@@ -46,7 +46,6 @@
 		045A788127AC557600519796 /* LatesetEventsNetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A788027AC557600519796 /* LatesetEventsNetworkingAPI.swift */; };
 		045A788427AC7D6400519796 /* TeamDetailsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A788327AC7D6400519796 /* TeamDetailsAPI.swift */; };
 		045A788627AC7D7D00519796 /* TeamDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A788527AC7D7D00519796 /* TeamDetails.swift */; };
-		045A788D27AC8F1F00519796 /* DemoNada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A788C27AC8F1F00519796 /* DemoNada.swift */; };
 		045A788F27AD543500519796 /* LeagueDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A788E27AD543500519796 /* LeagueDetailsPresenter.swift */; };
 		04B7932027AC044100CCD82F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7931F27AC044100CCD82F /* AppDelegate.swift */; };
 		04B7932227AC044100CCD82F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7932127AC044100CCD82F /* SceneDelegate.swift */; };
@@ -114,7 +113,6 @@
 		045A788027AC557600519796 /* LatesetEventsNetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatesetEventsNetworkingAPI.swift; sourceTree = "<group>"; };
 		045A788327AC7D6400519796 /* TeamDetailsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsAPI.swift; sourceTree = "<group>"; };
 		045A788527AC7D7D00519796 /* TeamDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetails.swift; sourceTree = "<group>"; };
-		045A788C27AC8F1F00519796 /* DemoNada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNada.swift; sourceTree = "<group>"; };
 		045A788E27AD543500519796 /* LeagueDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenter.swift; sourceTree = "<group>"; };
 		04B7931C27AC044100CCD82F /* SportsSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B7931F27AC044100CCD82F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -461,7 +459,6 @@
 				04B7932B27AC044600CCD82F /* Assets.xcassets */,
 				04B7933027AC044600CCD82F /* Info.plist */,
 				045A780427AC0B6F00519796 /* Model */,
-				045A788C27AC8F1F00519796 /* DemoNada.swift */,
 				8574FEF827AC7AE10087B087 /* ConectivityChek.swift */,
 				84AAC4D527B0993C00321A39 /* SportsSwift.xcdatamodeld */,
 			);
@@ -678,7 +675,6 @@
 				8599B19927ADBE3A008CCB07 /* FavouritesPresenter.swift in Sources */,
 				045A785027AC172400519796 /* Sports.swift in Sources */,
 				045A783E27AC15EF00519796 /* FavoritesTableViewController.swift in Sources */,
-				045A788D27AC8F1F00519796 /* DemoNada.swift in Sources */,
 				8574FEF927AC7AE10087B087 /* ConectivityChek.swift in Sources */,
 				045A786E27AC1AB500519796 /* TeamsMoudelCellView.swift in Sources */,
 				045A782E27AC120C00519796 /* TargetType.swift in Sources */,

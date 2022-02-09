@@ -21,7 +21,7 @@ class BaseAPI<T: TargetType> {
          let headers = target.headers
         let params = buildParams(task: target.task)
         Alamofire.request(target.baseURL + target.path, method: method, parameters: params.0, encoding: params.1, headers: headers).responseJSON { (response) in
-            print(response.request)
+            print(response.request ?? "")
         guard let statusCode = response.response?.statusCode else {
                           
             completion(.failure(Errors.statusError))
@@ -30,7 +30,7 @@ class BaseAPI<T: TargetType> {
             
            if statusCode == 200 {
                           
-              guard let jsonResponse = try? response.data
+              guard let jsonResponse = response.data
                 else {
                     completion(.failure(Errors.JSONError))
                               return

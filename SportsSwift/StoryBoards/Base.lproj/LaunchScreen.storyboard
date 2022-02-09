@@ -15,12 +15,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newSport" highlightedImage="Ball" translatesAutoresizingMaskIntoConstraints="NO" id="0HI-2D-tcp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="973"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new" translatesAutoresizingMaskIntoConstraints="NO" id="3vu-ZU-9K9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="971"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JLm-m0-Hh2">
+                                <rect key="frame" x="0.0" y="321" width="414" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.10054051390016609" green="0.12887544333158549" blue="0.32664372319796964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Qi-I3-BV1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="0.95866331335616439" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyZ-cG-AQA">
+                                <rect key="frame" x="20" y="387" width="374" height="121"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="110"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.161187619" green="0.20529142019999999" blue="0.51434201000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IyZ-cG-AQA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="46a-9n-wGR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IyZ-cG-AQA" secondAttribute="trailing" constant="20" id="bIt-zj-7eu"/>
+                            <constraint firstItem="3vu-ZU-9K9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rtq-kx-412"/>
+                            <constraint firstItem="3vu-ZU-9K9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="uvn-i9-Jpl"/>
+                            <constraint firstAttribute="bottom" secondItem="3vu-ZU-9K9" secondAttribute="bottom" constant="-75" id="vCX-vh-jLD"/>
+                            <constraint firstItem="3vu-ZU-9K9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xXY-5v-Xer"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IyZ-cG-AQA" secondAttribute="bottom" constant="354" id="xlv-u6-F0U"/>
+                            <constraint firstItem="IyZ-cG-AQA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="343" id="yVx-QY-v4h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -30,7 +56,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ball" width="129.5" height="97"/>
-        <image name="newSport" width="987" height="1080"/>
+        <image name="new" width="1000" height="1080"/>
     </resources>
 </document>
